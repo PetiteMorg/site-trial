@@ -1,0 +1,69 @@
+/* Predictive search panel for the homepage concepts. */
+.ps{position:fixed;inset:0;z-index:300}
+.ps[hidden]{display:none}
+.ps-dim{position:absolute;inset:0;background:rgba(20,20,20,.28);opacity:0;transition:opacity .25s}
+.ps-panel{position:absolute;left:0;right:0;top:0;max-height:min(86svh,760px);overflow:auto;background:var(--cream);border-bottom:1px solid var(--line);transform:translateY(-12px);opacity:0;transition:transform .35s cubic-bezier(.2,.7,.2,1),opacity .25s;box-shadow:0 30px 60px -30px rgba(20,20,20,.25)}
+.ps.on .ps-dim{opacity:1}
+.ps.on .ps-panel{transform:none;opacity:1}
+.ps-open,.ps-open body{overflow:hidden}
+
+.ps-bar{display:flex;align-items:center;gap:14px;height:84px;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--cream);z-index:1}
+.ps-bar svg{width:22px;height:22px;color:var(--muted);flex:none}
+.ps-in{flex:1;min-width:0;border:0;background:transparent;font-family:var(--display);font-size:26px;letter-spacing:-.01em;color:var(--ink);outline:0;height:100%}
+.ps-in::placeholder{color:#b3aca0}
+.ps-in::-webkit-search-cancel-button{display:none}
+.ps-x{font-size:13px;color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+
+.ps-hint{font-size:12px;color:var(--muted);padding-top:14px}
+.ps-body{padding-top:22px;padding-bottom:40px}
+.ps-cols{display:grid;grid-template-columns:260px 1fr;gap:56px}
+.ps-h{font-size:12px;color:var(--muted);margin:0 0 12px}
+.ps-side .ps-h:not(:first-child){margin-top:28px}
+.ps-chips{display:flex;flex-wrap:wrap;gap:6px}
+.ps-chips button{height:32px;padding:0 12px;border:1px solid var(--line);border-radius:var(--r-pill);font-size:13px;color:var(--ink);background:#fff;transition:border-color .2s}
+.ps-chips button:hover{border-color:var(--ink)}
+.ps-chips small{color:var(--muted);margin-left:4px;font-size:11px}
+.ps mark{background:none;color:inherit;font-weight:700}
+
+.ps-list{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.ps-row{display:grid;grid-template-columns:64px 1fr auto;gap:16px;align-items:center;padding:12px 8px;border-bottom:1px solid var(--line);color:var(--text);transition:background .15s}
+.ps-row:hover,.ps-row.act{background:#f3eee6}
+.ps-th{width:64px;height:64px;background:#f1ede6;display:block;overflow:hidden}
+.ps-th img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply}
+.ps-tx{display:flex;flex-direction:column;gap:1px;min-width:0}
+.ps-nm{font-size:14px;font-weight:500;color:var(--ink)}
+.ps-nm em{font-style:normal;font-size:11px;color:var(--coral-deep);font-weight:400;margin-left:4px}
+.ps-nt{font-size:12.5px}
+.ps-fm{font-size:12px;color:var(--muted)}
+.ps-pr{font-size:13.5px;color:var(--ink);text-align:right;font-variant-numeric:tabular-nums}
+.ps-pr small{display:block;font-size:11.5px;color:var(--muted)}
+.ps-all{display:inline-block;margin-top:16px;font-size:13px;color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+
+.ps-recs{display:flex;flex-direction:column;gap:10px}
+.ps-recs a{display:grid;grid-template-columns:48px 1fr;gap:12px;align-items:center;color:var(--text)}
+.ps-recs .ps-th{width:48px;height:48px}
+.ps-recs b{display:block;font-size:13px;font-weight:500;color:var(--ink)}
+.ps-recs small{font-size:12px}
+.ps-recs a:hover b{text-decoration:underline;text-underline-offset:3px}
+
+.ps-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.ps-card{display:flex;flex-direction:column;gap:2px;color:var(--text);text-align:center}
+.ps-im{aspect-ratio:1;background:#f1ede6;margin-bottom:10px;overflow:hidden}
+.ps-im img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply;transition:transform .8s}
+.ps-card:hover .ps-im img{transform:scale(1.03)}
+.ps-card .ps-nm{font-size:13.5px}
+.ps-card .ps-nt{font-size:12px}
+.ps-card .ps-pr{text-align:center;margin-top:4px}
+.ps-none{font-family:var(--display);font-size:20px;color:var(--ink);margin-bottom:24px}
+.ps-ds{display:block;margin-top:28px;font-size:13px;color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+
+@media (max-width:860px){
+  .ps-panel{max-height:100svh;height:100svh}
+  .ps-bar{height:64px}
+  .ps-in{font-size:20px}
+  .ps-cols{grid-template-columns:1fr;gap:28px}
+  .ps-main{order:-1}
+  .ps-cards{grid-template-columns:repeat(2,1fr)}
+  .ps-row{grid-template-columns:56px 1fr auto;gap:12px;padding:10px 0}
+  .ps-th{width:56px;height:56px}
+}

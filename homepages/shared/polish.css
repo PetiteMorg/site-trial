@@ -1,0 +1,37 @@
+/* Shared finishing touches for the Quiet and Tiles concepts. */
+html{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility}
+h1,h2,h3,blockquote,q{text-wrap:balance}
+p,li{text-wrap:pretty}
+.num-t,[data-price],.pr,.ft{font-variant-numeric:tabular-nums}
+
+/* images: tone placeholder, then a soft fade in */
+img{transition:opacity .6s ease}
+img.ld{opacity:0}
+
+/* calm reveal on scroll */
+@media (prefers-reduced-motion:no-preference){
+  [data-reveal]{opacity:0;transform:translateY(14px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+  [data-reveal].in{opacity:1;transform:none}
+  [data-reveal="2"]{transition-delay:.08s}[data-reveal="3"]{transition-delay:.16s}[data-reveal="4"]{transition-delay:.24s}
+}
+
+/* links with an arrow: the arrow moves, nothing else */
+.arw{display:inline-block;transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+a:hover .arw,button:hover .arw{transform:translateX(4px)}
+
+/* keyboard focus that fits the brand */
+:focus-visible{outline:1.5px solid var(--ink);outline-offset:3px;border-radius:2px}
+
+/* size toggle, same sizes as the PDP */
+.sz{display:flex;justify-content:center;gap:14px;margin-top:8px;font-size:12.5px}
+.sz button{color:var(--muted);padding:2px 0;border-bottom:1px solid transparent;transition:color .2s,border-color .2s}
+.sz button:hover{color:var(--ink)}
+.sz button[aria-pressed=true]{color:var(--ink);border-color:var(--ink)}
+
+/* add to cart feedback */
+[data-add]{transition:background .25s,color .25s}
+[data-add].done{background:var(--ink)!important;color:#fff!important}
+
+/* concept switcher sits lower and quieter on these two */
+.concept-bar{opacity:.55;transition:opacity .2s}
+.concept-bar:hover{opacity:1}

@@ -1,0 +1,122 @@
+/* Petite Mort homepage concepts, shared base.
+   Tokens read from the live storefront CSS on 21 Oct 2026. */
+
+@font-face{font-family:'Halyard Display';src:url(../fonts/HalyardDisplay-Regular.939a3516.woff2) format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'Halyard Display';src:url(../fonts/HalyardDisplaySemiBold-Regular.58e13c6b.woff2) format('woff2');font-weight:600;font-display:swap}
+@font-face{font-family:AktivGrotesk;src:url(../fonts/AktivGrotesk-Regular.7d27b69f.woff2) format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:AktivGrotesk;src:url(../fonts/AktivGrotesk-Medium.e48c1e34.woff2) format('woff2');font-weight:500;font-display:swap}
+@font-face{font-family:AktivGrotesk;src:url(../fonts/AktivGrotesk-Bold.b97c9785.woff2) format('woff2');font-weight:700;font-display:swap}
+
+:root{
+  --ink:#141414;        /* headings */
+  --text:#4a463f;       /* body */
+  --muted:#7c7265;      /* taupe, add button */
+  --cream:#fbf7f1;      /* page tint */
+  --cream-2:#f6f1e6;    /* chips, button text on taupe */
+  --sand:#ece6d8;
+  --line:#e6e1d9;
+  --coral:#ef776b;      /* main CTA */
+  --coral-deep:#e2604f; /* coral text, badges */
+  --terra:#c4714c;
+  --star:#f2cb49;
+  --white:#fff;
+  --display:'Halyard Display',-apple-system,system-ui,sans-serif;
+  --sans:AktivGrotesk,Inter,-apple-system,system-ui,sans-serif;
+  --r-card:16px;
+  --r-pill:9999px;
+  --gutter:clamp(16px,4vw,48px);
+  --max:1320px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--sans);color:var(--text);background:var(--white);font-size:16px;line-height:1.5;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gutter)}
+.h-display{font-family:var(--display);color:var(--ink);font-weight:400;letter-spacing:-.02em;line-height:1.02}
+.eyebrow{font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:500;color:var(--muted)}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 26px;border-radius:var(--r-pill);font-weight:500;font-size:14px;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap;transition:transform .2s,background .2s}
+.btn:active{transform:scale(.98)}
+.btn-coral{background:var(--coral);color:var(--ink)}
+.btn-coral:hover{background:#f2887d}
+.btn-ink{background:var(--ink);color:var(--white)}
+.btn-ghost{border:1px solid var(--ink);color:var(--ink)}
+.btn-ghost:hover{background:var(--ink);color:#fff}
+.btn-light{background:#fff;color:var(--ink)}
+
+/* announcement + header, same items as live */
+.announce{background:var(--muted);color:var(--cream-2);font-size:13px;text-align:center;padding:8px 16px}
+.site-header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:saturate(1.4) blur(12px);-webkit-backdrop-filter:saturate(1.4) blur(12px);border-bottom:1px solid var(--line)}
+.site-header .wrap{display:flex;align-items:center;gap:28px;height:68px}
+.logo{font-family:var(--display);font-size:26px;color:var(--ink);letter-spacing:-.02em}
+.nav{display:flex;gap:22px;font-size:14px;font-weight:500;color:var(--ink);margin-left:auto}
+.nav a:hover{color:var(--coral-deep)}
+.hdr-actions{display:flex;align-items:center;gap:16px;color:var(--ink)}
+.hdr-actions .btn{height:40px;padding:0 18px;font-size:13px}
+.hdr-actions svg{width:20px;height:20px}
+.hdr-search{display:grid;place-items:center;color:inherit;padding:0}
+.lang{font-size:12px;letter-spacing:.06em}
+.burger{display:none}
+@media (max-width:1080px){
+  .nav,.hdr-actions .btn,.lang{display:none}
+  .burger{display:block}
+  .site-header .wrap{height:58px}
+  .hdr-actions{margin-left:auto}
+  .logo{font-size:22px}
+}
+
+/* product card: the live catalogue card */
+.pcard{display:grid;grid-template-columns:40% 1fr;gap:14px;background:var(--cream);border-radius:var(--r-card);padding:10px;position:relative;min-height:180px}
+.pcard .pimg{position:relative;border-radius:12px;overflow:hidden;aspect-ratio:1/1;background:var(--sand)}
+.pcard .pimg img{width:100%;height:100%;object-fit:cover;transition:opacity .35s}
+.pcard .pimg img.alt{position:absolute;inset:0;opacity:0}
+.pcard:hover .pimg img.alt{opacity:1}
+.badge{position:absolute;top:8px;left:8px;background:var(--muted);color:var(--cream-2);font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;padding:4px 9px;border-radius:var(--r-pill);z-index:1}
+.pcard .pbody{display:flex;flex-direction:column;gap:4px;padding:4px 4px 4px 0;min-width:0}
+.prow{display:flex;justify-content:space-between;align-items:center;font-size:12px}
+.stars{color:var(--star);letter-spacing:1px;font-size:12px}
+.rating{color:var(--text);font-size:12px}
+.gender{font-size:10px;letter-spacing:.12em;color:var(--muted);text-transform:uppercase}
+.pname{font-family:var(--sans);font-weight:700;color:var(--ink);font-size:17px;line-height:1.2}
+.pnotes{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.pfamily{background:var(--cream-2);border:1px solid var(--line);font-size:12px;color:var(--ink);padding:5px 9px;border-radius:8px;width:fit-content;margin-top:4px}
+.pprice{font-weight:700;color:var(--ink);font-size:17px;margin-top:auto}
+.padd{position:absolute;right:10px;bottom:10px;width:34px;height:34px;border-radius:50%;background:var(--muted);color:var(--cream-2);display:grid;place-items:center;font-size:20px;line-height:1}
+.padd:hover{background:var(--ink)}
+
+/* vertical card variant, same content, image on top */
+.pcard.v{grid-template-columns:1fr;padding:10px 10px 14px}
+.pcard.v .pimg{aspect-ratio:4/5}
+
+/* trust strip */
+.trust{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text)}
+.tp-star{display:inline-grid;place-items:center;width:18px;height:18px;background:#00b67a;color:#fff;font-size:11px}
+
+/* footer, same links as live */
+.site-footer{background:var(--muted);color:var(--cream-2);padding:64px 0 28px;margin-top:0}
+.site-footer .cols{display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:40px}
+.site-footer h4{font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:500;margin-bottom:14px;opacity:.8}
+.site-footer li{list-style:none;font-size:14px;margin:8px 0}
+.site-footer .news{display:flex;margin-top:14px;max-width:360px}
+.site-footer .news input{flex:1;height:46px;border-radius:var(--r-pill) 0 0 var(--r-pill);border:1px solid rgba(246,241,230,.5);background:transparent;color:var(--cream-2);padding:0 18px;font:inherit}
+.site-footer .news input::placeholder{color:rgba(246,241,230,.7)}
+.site-footer .news button{border-radius:0 var(--r-pill) var(--r-pill) 0;background:var(--cream-2);color:var(--ink);padding:0 20px;font-weight:500;font-size:13px;letter-spacing:.06em}
+.site-footer .legal{display:flex;justify-content:space-between;gap:16px;margin-top:48px;padding-top:20px;border-top:1px solid rgba(246,241,230,.25);font-size:12px;opacity:.85;flex-wrap:wrap}
+@media (max-width:860px){.site-footer .cols{grid-template-columns:1fr 1fr}.site-footer .cols>div:first-child{grid-column:1/-1}}
+
+/* reveal: CSS only, no JS scroll libs (TBT budget) */
+@media (prefers-reduced-motion:no-preference){
+  @supports (animation-timeline:view()){
+    .reveal{animation:rv linear both;animation-timeline:view();animation-range:entry 0% cover 22%}
+    @keyframes rv{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+  }
+}
+
+/* concept switcher (review aid only, not part of the design) */
+.concept-bar{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:100;display:flex;gap:4px;background:rgba(20,20,20,.88);padding:5px;border-radius:var(--r-pill);font-size:12px;box-shadow:0 8px 30px rgba(0,0,0,.2)}
+.concept-bar a{color:#fff;padding:7px 12px;border-radius:var(--r-pill);white-space:nowrap}
+.concept-bar a.on{background:#fff;color:var(--ink)}
+@media (max-width:520px){.concept-bar a{padding:7px 9px;font-size:11px}.concept-bar a span{display:none}}

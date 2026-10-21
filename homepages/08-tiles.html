@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Petite Mort | Tiles</title>
+<link rel="stylesheet" href="shared/base.css">
+<link rel="stylesheet" href="shared/polish.css">
+<script src="shared/shared.js"></script>
+<script src="shared/polish.js"></script>
+<style>
+/* Tiles: four doors on the first screen, then a plain ruled grid. */
+.t{background:var(--cream);color:var(--text);font-size:14px;line-height:1.5}
+.t .site-header{background:rgba(251,247,241,.92);border-bottom-color:rgba(230,225,217,.7)}
+.t .line{border-color:var(--line)}
+
+/* four doors */
+.doors{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--line)}
+.door{display:flex;flex-direction:column;border-right:1px solid var(--line);color:var(--ink)}
+.door:last-child{border-right:0}
+.door .im{position:relative;height:clamp(420px,calc(100svh - 104px - 116px),720px);overflow:hidden;background:var(--sand)}
+.door .im img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.door .im img{transition:transform 1.4s cubic-bezier(.2,.7,.2,1),filter .6s,opacity .6s}
+.door:hover .im img{transform:scale(1.025)}
+@media (hover:hover){.doors:hover .door:not(:hover) .im img{filter:saturate(.7) brightness(.92)}}
+@media (prefers-reduced-motion:no-preference){
+  .door{opacity:0;transform:translateY(12px);transition:opacity 1s cubic-bezier(.2,.7,.2,1),transform 1s cubic-bezier(.2,.7,.2,1)}
+  .ready .door{opacity:1;transform:none}
+  .ready .door:nth-child(2){transition-delay:.08s}.ready .door:nth-child(3){transition-delay:.16s}.ready .door:nth-child(4){transition-delay:.24s}
+}
+.door .cap{padding:18px 20px 22px;height:116px;display:flex;flex-direction:column;gap:2px}
+.door .cap b{font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.door .cap span{font-size:14px;color:var(--text)}
+.door .cap u{font-size:13px;margin-top:auto;text-underline-offset:3px;text-decoration-thickness:1px;width:fit-content}
+.door:hover .cap u{color:var(--coral-deep)}
+
+/* ruled grid */
+.bar{display:flex;justify-content:space-between;align-items:center;padding:18px 0;border-bottom:1px solid var(--line)}
+.bar b{font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink)}
+.bar a{font-size:13px;text-decoration:underline;text-underline-offset:3px;color:var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);border-left:1px solid var(--line)}
+.cell{border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:20px;display:flex;flex-direction:column;color:var(--text);position:relative;background:var(--cream)}
+.cell .ph{aspect-ratio:1;background:#f1ede6;margin:-20px -20px 18px;overflow:hidden;position:relative}
+.cell .ph img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply;transition:opacity .4s}
+.cell .ph img.b{position:absolute;inset:0;object-fit:cover;mix-blend-mode:normal;opacity:0}
+.cell:hover .ph img.b{opacity:1}
+.cell .nm{font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink)}
+.cell .nt{font-size:13.5px;margin-top:2px}
+.cell .fm{font-size:12.5px;color:var(--muted);margin-top:2px}
+.cell .ft{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:12px;border-top:1px solid var(--line);font-size:13px;color:var(--ink)}
+.cell .mid{display:flex;justify-content:space-between;align-items:center;margin:14px 0 12px;font-size:12px}
+.cell .mid .sz{margin:0;justify-content:flex-start}
+.cell .mid .stars{font-size:10.5px}
+.cell .ft button.done{background:none!important;color:var(--ink)!important;text-decoration:none}
+
+.cell .ft button{font-size:13px;text-decoration:underline;text-underline-offset:3px}
+.cell .ft button:hover{color:var(--coral-deep)}
+.cell .tag{position:absolute;top:12px;left:12px;font-size:12px;color:var(--coral-deep)}
+
+/* text cells */
+.txt{padding:36px 28px;display:flex;flex-direction:column;gap:10px;color:var(--text)}
+.txt b{font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink)}
+.txt p{font-size:14px;max-width:440px}
+.txt .rows{margin-top:6px;max-width:360px}
+.txt .rows div{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--line);font-size:13px}
+.txt .rows div.pm{color:var(--ink);font-weight:500}
+.txt small{font-size:11.5px;color:var(--muted);max-width:400px}
+.txt a{margin-top:auto;padding-top:14px;font-size:13px;text-decoration:underline;text-underline-offset:3px;color:var(--ink);width:fit-content}
+.wide2{grid-column:span 2}
+.imgcell{padding:0;aspect-ratio:4/3;overflow:hidden}
+.imgcell img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.6s cubic-bezier(.2,.7,.2,1),opacity .6s}
+.imgcell:hover img{transform:scale(1.02)}
+.imgcell + .txt,.txt:has(+ .imgcell){justify-content:center}
+.quote{grid-column:span 2;padding:48px 28px;display:flex;flex-direction:column;justify-content:center;gap:10px}
+.quote q{font-family:var(--display);font-size:24px;line-height:1.3;color:var(--ink);quotes:"\2018" "\2019"}
+.quote span{font-size:12.5px}
+
+/* mobile */
+@media (max-width:980px){
+  .doors{grid-template-columns:1fr 1fr}
+  .door:nth-child(2){border-right:0}
+  .door:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  .door .im{height:clamp(260px,52vw,460px)}
+  .grid{grid-template-columns:1fr 1fr}
+  .wide2,.quote{grid-column:span 2}
+  .imgcell{grid-column:span 2;aspect-ratio:4/3}
+  /* stacked: every pair reads photo first, then its words, then a pause */
+  #more{border-left:0;gap:0}
+  #more>.cell{border-left:1px solid var(--line)}
+  #more>.cell:nth-child(1){order:2}
+  #more>.cell:nth-child(2){order:1}
+  #more>.cell:nth-child(n+3){order:3}
+  #more>.imgcell{border-bottom:0}
+  #more>.txt{margin-bottom:24px;border-top:0}
+  #more>.cell:nth-child(7){margin-bottom:0}
+  #more>.txt a{margin-top:6px}
+}
+@media (max-width:560px){
+  .door .im{height:64vw}
+  .door .cap{padding:12px 12px 14px;height:auto;min-height:104px}
+  .door .cap span{font-size:13px}
+  .cell{padding:14px}.cell .ph{margin:-14px -14px 12px}
+  .cell.imgcell{padding:0}
+  .cell .nm{font-size:12px}.cell .nt{font-size:12.5px}.cell .fm{font-size:11.5px}
+  .cell .mid{flex-direction:column;align-items:flex-start;gap:6px}
+  .txt{padding:28px 16px}
+}
+</style>
+</head>
+<body class="t">
+<div data-pm="header"></div>
+
+<main>
+  <section class="doors" id="doors"></section>
+
+  <section class="wrap" style="padding-top:56px">
+    <div class="bar"><b>Our best smellers</b><a href="#">Shop all scents</a></div>
+  </section>
+  <section class="wrap" style="padding-bottom:0">
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <section class="wrap" style="padding:56px var(--gutter) 88px">
+    <div class="bar"><b>Petite Mort</b><a href="#">What customers say</a></div>
+    <div class="grid" id="more">
+      <div class="cell txt wide2" data-reveal>
+        <b>30% fragrance oil</b>
+        <p>That's why you still smell it at night. The big brands usually only give you 10-15% perfume oils. We use 30% to keep you smelling incredible all day.</p>
+        <div class="rows">
+          <div><span>Eau de toilette, 2-3 hours</span><span>10%</span></div>
+          <div><span>Eau de parfum, 3-6 hours</span><span>15%</span></div>
+          <div class="pm"><span>Petite Mort, 10+ hours</span><span>30%</span></div>
+        </div>
+        <small>Industry average concentrations by fragrance type. Not figures for any specific fragrance. Wear time varies by skin type and climate.</small>
+      </div>
+      <div class="cell imgcell wide2"><img src="https://petitemort.co/_next/image?url=https%3A%2F%2Fcdn.petitemort.co%2Fpm-action-cigar-lounge-01M3QKMH77089ZX4ABQ072RQJ6.jpg&w=1200&q=75" alt="Cigar Lounge" loading="lazy"></div>
+      <div class="cell imgcell wide2"><img src="https://petitemort.co/_next/image?url=https%3A%2F%2Fcdn.petitemort.co%2Fpm-guarantee-2-wear.png&w=1200&q=75" alt="" loading="lazy"></div>
+      <div class="cell txt wide2" data-reveal>
+        <b>Wear it for 30 days</b>
+        <p>Not in love? Return it opened. A scent changes in the first hour, and again by evening. A paper strip under shop lights shows you none of it. Wear it to work, to dinner, to bed.</p>
+        <p style="color:var(--ink)">Full refund, even if the bottle has been opened.</p>
+        <a href="#">Shipping and returns <span class="arw">&rarr;</span></a>
+      </div>
+      <div class="cell imgcell wide2"><img style="object-position:50% 0" src="https://petitemort.co/_next/image?url=https%3A%2F%2Fcdn.petitemort.co%2FPETITEMORT_15.png&w=1200&q=75" alt="Discovery Set" loading="lazy"></div>
+      <div class="cell txt wide2" data-reveal>
+        <b>Discovery Set | 6 Samples</b>
+        <p>Can't choose? Test 6 premium scents. Test six exclusive perfumes and find your perfect match.</p>
+        <p style="color:var(--ink)">€ 45, including a €40 Gift Card.</p>
+        <small>The Gift Card gives €40 off the 100 ml bundle or €20 off a single 100 ml bottle.</small>
+        <a href="#">Choose 6 scents <span class="arw">&rarr;</span></a>
+      </div>
+      <div class="cell txt wide2" data-reveal>
+        <b>Buy 2, get 1 free</b>
+        <p>Build your scent wardrobe. Pick any number of 50 ml scents: € 39 becomes € 26 per bottle. 3x 50ML Bundle € 78, was € 117.</p>
+        <a href="#">Build your bundle <span class="arw">&rarr;</span></a>
+      </div>
+      <div class="cell quote" data-reveal>
+        <span class="stars" style="font-size:11px">★★★★★</span>
+        <q>Even my pillow smells of it.</q>
+        <span>Sylvia D., verified buyer · (4.4) based on 4,839 reviews</span>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div data-pm="footer"></div>
+
+<script>
+(() => {
+  const $ = id => document.getElementById(id);
+  const by = h => PM.products.find(p => p.h === h);
+  const studio = {'mysterious-woods':'mysterious_woods','elegant-warmth':'elegantwarmth','suave-night':'suave_night','cigar-lounge':'cigar_lounge','sensual-oud':'sensual_oud','cherry-bomb':'cherry_bomb','everyday-vanilla':'everyday_vanilla','orange-roses':'orange_roses','citrus-of-the-sea':'citrus_of_the_sea','spicy-vanilla-coffee':'spicy_vanilla_coffee'};
+
+  const doors = [
+    ['Best sellers', 'our best smellers…', PM.pimg(by('mysterious-woods'),'a',1080), 'View more'],
+    ['Women', 'orange roses, everyday vanilla, spicy vanilla coffee…', PM.pimg(by('orange-roses'),'a',1080), 'Shop women'],
+    ['Men', 'suave night, smokey pineapple, citrus of the sea…', PM.pimg(by('suave-night'),'a',1080), 'Shop men'],
+    ['Bundles & Save', 'buy 2, get 1 free…', PM.pimg(by('cherry-bomb'),'a',1080), 'Build your bundle'],
+  ];
+  $('doors').innerHTML = doors.map(([t,l,u,c],i) => `
+    <a class="door" href="#"><div class="im"><img src="${u}" alt="" ${i<2?'fetchpriority="high"':'loading="lazy"'}></div>
+    <div class="cap"><b>${t}</b><span>${l}</span><u>${c} <span class="arw">&rarr;</span></u></div></a>`).join('');
+
+  const list = Object.keys(studio).slice(0,8).map(by);
+  $('grid').innerHTML = list.map((p,i) => `
+    <a class="cell" href="#" data-card data-reveal="${i%4+1}">
+      <div class="ph">${p.pop?'<span class="tag">Popular</span>':''}<img src="${PM.sized(PM.CDN+studio[p.h]+'.jpg',640)}" alt="${p.n}" loading="lazy"><img class="b" src="${PM.pimg(p,'f',640)}" alt="" loading="lazy"></div>
+      <span class="nm">${p.n}</span>
+      <span class="nt">${p.notes.join(', ').toLowerCase()}</span>
+      ${p.fam?`<span class="fm">Same scent family as ${p.fam}</span>`:''}
+      <span class="mid"><span class="sz" data-sizes><button data-size="€ 39" aria-pressed="true">50 ml</button><button data-size="€ 59" aria-pressed="false">100 ml</button></span><span><span class="stars">★★★★★</span> ${p.r}</span></span>
+      <span class="ft"><span data-price>${PM.prices.ml50}</span><button data-add>Add to cart</button></span>
+    </a>`).join('');
+})();
+</script>
+</body>
+</html>
