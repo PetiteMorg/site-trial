@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Petite Mort | Direct</title>
+<link rel="stylesheet" href="shared/base.css">
+<link rel="stylesheet" href="shared/r4.css">
+<script src="shared/shared.js"></script>
+<script src="shared/catalogue.js"></script>
+<script src="shared/agi.js"></script>
+<script src="shared/r4.js" defer></script>
+<style>
+/* Direct: the first phone screen holds everything (Grüns model). Offer sticker on the photo,
+   stars over a short headline, one coral button with the saving in it, the guarantee under it,
+   three proof figures. Desktop splits the same blocks into two columns. */
+.hero10{padding:12px 0 20px}
+.hero10 .wrap{display:grid;gap:14px}
+.hero10 .im{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:16/10;background:#f2efea}
+.hero10 .im img{width:100%;height:100%;object-fit:cover;object-position:50% 45%}
+.sticker{position:absolute;right:12px;top:12px;width:86px;height:86px;border-radius:50%;background:var(--coral);color:var(--ink);display:grid;place-items:center;text-align:center;font-family:var(--display);font-weight:600;font-size:15px;line-height:1.05;transform:rotate(-8deg);box-shadow:0 6px 18px rgba(0,0,0,.12)}
+.sticker small{display:block;font-size:11px;font-family:var(--sans);font-weight:500}
+.hero10 h1{font-size:clamp(30px,8.4vw,52px);line-height:1.02}
+.hero10 h1 em{font-style:normal;color:var(--coral-deep)}
+.stats3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:6px}
+.stats3 div{text-align:center;background:var(--cream);border-radius:14px;padding:10px 4px}
+.stats3 b{display:block;font-family:var(--display);font-weight:600;font-size:22px;color:var(--ink);line-height:1.1}
+.stats3 span{font-size:11.5px;line-height:1.25;display:block;margin-top:2px}
+@media(min-width:900px){
+  .hero10{padding:28px 0 40px}
+  .hero10 .wrap{grid-template-columns:1fr 1.05fr;gap:56px;align-items:center}
+  .hero10 .im{order:2;aspect-ratio:1/1;max-height:calc(100vh - 160px)}
+  .sticker{width:120px;height:120px;font-size:20px;right:22px;top:22px}
+  .sticker small{font-size:13px}
+  .hero10 .tx{display:flex;flex-direction:column;gap:16px}
+  .hero10 .b4{align-self:flex-start;min-width:360px}
+  .hero10 .assure{justify-content:flex-start}
+  .stats3{max-width:480px;margin-top:10px}
+}
+.shopby{padding:8px 0 0}
+.ds10{display:grid;gap:16px;align-items:center}
+.ds10 .im{border-radius:20px;overflow:hidden;background:#cdbfae;aspect-ratio:1}
+.ds10 .im img{width:100%;height:100%;object-fit:cover}
+.ds10 .tx{display:flex;flex-direction:column;gap:12px}
+.ds10 .price{font-family:var(--display);font-size:28px;font-weight:600;color:var(--ink)}
+.ds10 .price s{font-size:18px;color:var(--muted);font-weight:400;margin-left:8px}
+@media(min-width:900px){.ds10{grid-template-columns:1fr 1fr;gap:64px}.ds10 .b4{align-self:flex-start;min-width:300px}}
+</style>
+</head>
+<body class="r4">
+<div data-pm="header"></div>
+
+<main>
+  <section class="hero10">
+    <div class="wrap">
+      <div class="im">
+        <img id="heroImg" alt="Mysterious Woods with sandalwood, cedar and leather" fetchpriority="high">
+        <div class="sticker"><span>Buy 2<small>get 1 free</small></span></div>
+      </div>
+      <div class="tx">
+        <div class="rate4"><span class="st">★★★★★</span><b>(4.4)</b> based on 4,839 reviews</div>
+        <h1>30% fragrance oil. <em>That's why you still smell it at night.</em></h1>
+        <a class="b4 coral" id="heroCta" href="#bundle">Build your bundle <small>· Save 33%</small></a>
+        <div class="assure"><span>30-day returns, even if opened</span><span>Free shipping over € 50</span></div>
+        <div class="stats3">
+          <div><b>30%</b><span>Intense concentration</span></div>
+          <div><b>8h+</b><span>Lasts over 8 hours</span></div>
+          <div><b>12,000+</b><span>bundles ordered</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="shopby">
+    <div class="wrap">
+      <nav class="pills4" aria-label="Shop by">
+        <a class="on" href="#best">Best sellers</a><a href="#">Shop women</a><a href="#">Shop men</a><a href="#ds">Discovery Set <i>€40 card</i></a>
+      </nav>
+    </div>
+  </section>
+
+  <section class="sec" id="best">
+    <div class="wrap">
+      <div class="head"><h2>Our best smellers</h2><a href="#">Shop all scents</a></div>
+      <div class="grid4r" id="grid"></div>
+    </div>
+  </section>
+
+  <section class="sec" id="bundle">
+    <div class="wrap">
+      <div class="bundle4">
+        <div class="tx">
+          <span class="save">Save 33%</span>
+          <h2>Build your scent wardrobe</h2>
+          <p>Pick any number of 50 ml scents. Build your bundle and get 1 bottle for free.</p>
+          <div class="price">€ 78 <s>€ 117</s></div>
+          <p style="font-size:13px">€ 39 &rarr; € 26 /bottle · 12,000+ bundles ordered</p>
+          <a class="b4 coral" href="#">Build your bundle</a>
+        </div>
+        <div class="im"><img id="bundleImg" alt="" loading="lazy"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="ds">
+    <div class="wrap ds10">
+      <div class="im"><img src="https://petitemort.co/_next/image?url=https%3A%2F%2Fcdn.petitemort.co%2FPETITEMORT_15.png&w=1080&q=75" alt="Discovery Set" loading="lazy"></div>
+      <div class="tx">
+        <div class="rate4"><span class="st">★★★★★</span><b>4.8</b> (734)</div>
+        <h2>Can't choose? Test 6 premium scents.</h2>
+        <p>Test six exclusive perfumes and find your perfect match. Including a €40 Gift Card.</p>
+        <div class="price">€ 45<s>€ 70</s></div>
+        <a class="b4 ink" href="#">Choose 6 scents</a>
+        <p style="font-size:12.5px;color:var(--muted)">The Gift Card gives €40 off the 100 ml bundle or €20 off a single 100 ml bottle.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="head"><h2>Wear it for 30 days. Not in love? Return it opened.</h2></div>
+      <div class="steps4">
+        <div><b>1</b><p>It arrives<span>Sealed and boxed.</span></p></div>
+        <div><b>2</b><p>You wear it<span>30 days on your skin.</span></p></div>
+        <div><b>3</b><p>You decide<span>Keep it or your money back.</span></p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="head"><h2>What customers say</h2><div class="rate4"><span class="st">★★★★★</span><b>(4.4)</b> 4,839 reviews</div></div>
+      <div class="rev4" id="revs"></div>
+    </div>
+  </section>
+</main>
+
+<div data-pm="footer"></div>
+<div class="dock"><a class="b4 coral" href="#bundle">Build your bundle <small>· Save 33%</small></a></div>
+
+<script>
+addEventListener('DOMContentLoaded', () => {
+  const $ = id => document.getElementById(id);
+  const best = ['mysterious-woods', 'suave-night', 'smokey-pineapple', 'cherry-bomb', 'sensual-oud', 'honey-tobacco', 'deep-leather', 'pure-essence'].map(PM4.by);
+  $('heroImg').src = PM4.still(PM4.by('mysterious-woods'), 1200, ['torn', 'split']);
+  $('bundleImg').src = PM4.still(PM4.by('cherry-bomb'), 1200, ['collage', 'torn']);
+  $('grid').innerHTML = best.map((p, i) => PM4.card(p, { eager: i < 2 })).join('');
+  $('revs').innerHTML = PM.reviews.map(r => `<figure><span class="st">★★★★★</span><blockquote>${r.t}</blockquote><figcaption>${r.n}${r.p ? ' · ' + r.p : ''} · Verified buyer</figcaption></figure>`).join('');
+  PM4.dock('#heroCta');
+});
+</script>
+</body>
+</html>

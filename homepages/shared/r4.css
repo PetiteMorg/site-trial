@@ -1,0 +1,92 @@
+/* Round 4 (26 Oct 2026): direct-response homepages.
+   Built from the first mobile screen of top D2C stores (research/ABOVE-THE-FOLD.md):
+   short headline, stars next to the button, one filled button, product in the hero,
+   offer above the fold, shop-by entry at the fold. Live fonts, colours and copy only.
+   Photos: still lifes only, no people (Dan, 26 Oct). */
+
+.r4{background:#fff;color:var(--text);font-size:15px;--max:1440px}  /* a little wider than the shared 1320 */
+.r4 h1,.r4 h2,.r4 h3{font-family:var(--display);color:var(--ink);letter-spacing:-.02em;font-weight:600}
+.r4 h2{font-size:clamp(26px,3vw,36px);line-height:1.08}
+.r4 .sec{padding:clamp(48px,7vw,96px) 0}
+.r4 .sec + .sec{padding-top:0}
+.r4 .head{display:flex;align-items:end;justify-content:space-between;gap:16px;margin-bottom:24px}
+.r4 .head a{font-size:14px;font-weight:500;color:var(--ink);text-decoration:underline;text-underline-offset:4px}
+
+/* stars line, used next to every button */
+.rate4{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--ink)}
+.rate4 .st{color:var(--star);letter-spacing:1px;font-size:14px}
+.rate4 b{font-weight:500}
+
+/* buttons */
+.b4{display:flex;align-items:center;justify-content:center;gap:10px;height:54px;padding:0 28px;border-radius:var(--r-pill);font-weight:600;font-size:16px;letter-spacing:0;white-space:nowrap;transition:transform .15s,background .2s}
+.b4:active{transform:scale(.98)}
+.b4.coral{background:var(--coral);color:var(--ink)}
+.b4.coral:hover{background:#f2887d}
+.b4.ink{background:var(--ink);color:#fff}
+.b4.line{border:1.5px solid var(--ink);color:var(--ink);height:50px}
+.b4 small{font-weight:500;font-size:13px;opacity:.8}
+
+/* the small reassurance line under a button */
+.assure{display:flex;justify-content:center;flex-wrap:wrap;gap:6px 16px;margin-top:10px;font-size:12.5px;color:var(--text)}
+.assure span::before{content:"";display:inline-block;width:12px;height:7px;border-left:1.5px solid var(--ink);border-bottom:1.5px solid var(--ink);transform:rotate(-45deg) translateY(-3px);margin-right:7px}
+
+/* pills: shop-by entry */
+.pills4{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:2px 0}
+.pills4::-webkit-scrollbar{display:none}
+.pills4 a,.pills4 button{flex:none;height:38px;padding:0 16px;border:1px solid var(--line);border-radius:var(--r-pill);display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:500;color:var(--ink);background:#fff}
+.pills4 a.on,.pills4 button.on{background:var(--ink);border-color:var(--ink);color:#fff}
+.pills4 i{font-style:normal;font-size:11px;background:var(--coral);color:var(--ink);border-radius:var(--r-pill);padding:1px 7px;font-weight:600}
+
+/* product card */
+.grid4r{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 12px}
+@media(min-width:900px){.grid4r{grid-template-columns:repeat(4,minmax(0,1fr));gap:32px 20px}}
+.c4{display:flex;flex-direction:column;min-width:0}
+.c4 .ph{position:relative;display:block;aspect-ratio:4/5;border-radius:12px;overflow:hidden;background:#f2efea}
+.c4 .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .45s,transform .9s cubic-bezier(.2,.7,.2,1)}
+.c4 .ph img.alt{opacity:0}
+@media(hover:hover){.c4:hover .ph img.alt{opacity:1}.c4:hover .ph img{transform:scale(1.02)}}
+.c4 .tag{position:absolute;z-index:1;top:10px;left:10px;background:#fff;color:var(--ink);font-size:11.5px;font-weight:600;border-radius:var(--r-pill);padding:4px 10px}
+.c4 .rt{margin-top:12px;font-size:12px;color:var(--text)}
+.c4 .rt .st{color:var(--star)}
+.c4 .nm{font-family:var(--display);font-weight:600;font-size:17px;color:var(--ink);margin-top:3px}
+.c4 .nt{font-size:12.5px;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.c4 .fm{font-size:12px;color:var(--muted);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.c4 .sz{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:12px}
+.c4 .sz button{height:36px;border:1px solid var(--line);border-radius:10px;font-size:12.5px;color:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.15}
+.c4 .sz button small{font-size:11px;color:var(--muted)}
+.c4 .sz button[aria-pressed=true]{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.c4 .add{margin-top:8px;height:44px;border-radius:var(--r-pill);background:var(--ink);color:#fff;font-size:14px;font-weight:500;transition:background .2s}
+.c4 .add.ok{background:#2f6b4f}
+
+/* bundle explainer row */
+.bundle4{display:grid;gap:20px;align-items:center;background:var(--cream);border-radius:20px;overflow:hidden}
+.bundle4 .tx{padding:28px 22px 30px;display:flex;flex-direction:column;gap:12px}
+.bundle4 .price{display:flex;align-items:baseline;gap:10px;font-family:var(--display);font-size:30px;color:var(--ink);font-weight:600}
+.bundle4 .price s{font-size:18px;color:var(--muted);font-weight:400}
+.bundle4 .save{align-self:flex-start;background:var(--coral);color:var(--ink);font-size:12px;font-weight:600;border-radius:var(--r-pill);padding:4px 10px}
+.bundle4 .im{aspect-ratio:4/3;overflow:hidden}
+.bundle4 .im img{width:100%;height:100%;object-fit:cover}
+@media(min-width:900px){.bundle4{grid-template-columns:1.1fr 1fr}.bundle4 .tx{padding:56px}.bundle4 .im{aspect-ratio:auto;height:100%;min-height:440px}}
+
+/* guarantee steps, text only */
+.steps4{display:grid;gap:12px}
+.steps4 div{background:var(--cream);border-radius:16px;padding:22px;display:flex;gap:16px;align-items:flex-start}
+.steps4 b{flex:none;width:34px;height:34px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-size:14px}
+.steps4 p{color:var(--ink);font-weight:500}
+.steps4 p span{display:block;font-weight:400;color:var(--text);font-size:14px}
+@media(min-width:900px){.steps4{grid-template-columns:repeat(3,1fr);gap:20px}}
+
+/* review cards */
+.rev4{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(260px,82%);gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+.rev4::-webkit-scrollbar{display:none}
+.rev4 figure{scroll-snap-align:start;margin:0;border:1px solid var(--line);border-radius:16px;padding:22px;display:flex;flex-direction:column;gap:10px}
+.rev4 .st{color:var(--star)}
+.rev4 blockquote{font-size:16px;color:var(--ink);line-height:1.45}
+.rev4 figcaption{font-size:12.5px;margin-top:auto}
+@media(min-width:900px){.rev4{grid-auto-columns:calc((100% - 36px)/4)}}
+
+/* sticky bottom bar on phones (Grüns / AG1 keep the button under the thumb) */
+.dock{position:fixed;z-index:60;left:0;right:0;bottom:0;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-top:1px solid var(--line);transform:translateY(110%);transition:transform .3s}
+.dock.show{transform:none}
+.dock .b4{height:50px;width:100%}
+@media(min-width:900px){.dock{display:none}}

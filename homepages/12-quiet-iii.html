@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Petite Mort | Quiet III</title>
+<link rel="stylesheet" href="shared/base.css">
+<link rel="stylesheet" href="shared/r4.css">
+<script src="shared/shared.js"></script>
+<script src="shared/catalogue.js"></script>
+<script src="shared/agi.js"></script>
+<script src="shared/r4.js" defer></script>
+<style>
+/* Quiet III: Quiet's calm, with the first screen of a store. The words sit ON the photograph
+   (Amed: "a big picture with text under it is not a homepage"), stars and two buttons stay in
+   view, the four promises fit under them, and the first products start on screen one.
+   Warm ivory ground, ink buttons, coral only for the offer. */
+.r4.q3{background:#fbf7f1;--gap4:12px}
+@media(min-width:900px){.r4.q3{--gap4:16px}}
+/* Spacing: every block sits in the same .wrap (same max width, same side gutter).
+   Hero and promises are one unit, --gap4 apart; every section below is one --sec apart. */
+.q3 .top{padding-top:var(--gap4)}
+.hero12{position:relative;border-radius:20px;overflow:hidden;height:min(64svh,620px);min-height:440px;background:#e9e0d6}
+.hero12 img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%}
+.hero12::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(24,18,14,.62) 0%,rgba(24,18,14,.15) 46%,rgba(24,18,14,0) 70%)}
+.hero12 .tx{position:absolute;z-index:1;left:20px;right:20px;bottom:20px;display:flex;flex-direction:column;gap:12px;color:#fff}
+.hero12 h1{color:#fff;font-weight:400;font-size:clamp(30px,8vw,56px);line-height:1.04;max-width:14ch}
+.hero12 .rate4{color:#fff}
+.hero12 .btns{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.hero12 .b4{height:50px;font-size:15px}
+.hero12 .b4.w{background:#fff;color:var(--ink)}
+.hero12 .b4.o{border:1.5px solid #fff;color:#fff}
+.promise{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:var(--gap4);border:1px solid var(--line);border-radius:16px;background:#fff;overflow:hidden}
+.promise div{padding:12px 10px;font-size:12.5px;color:var(--ink);display:flex;align-items:center;gap:8px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.promise div:nth-child(2n){border-right:0}
+.promise div:nth-child(n+3){border-bottom:0}
+.promise svg{flex:none;width:18px;height:18px}
+@media(min-width:900px){
+  .hero12{height:min(78vh,760px)}
+  .hero12 .tx{left:56px;bottom:56px;right:auto;max-width:560px;gap:18px}
+  .hero12 .btns{grid-template-columns:auto auto;justify-content:start}
+  .hero12 .b4{min-width:190px}
+  .promise{grid-template-columns:repeat(4,1fr)}
+  .promise div{justify-content:center;border-bottom:0;padding:18px}
+  .promise div:nth-child(2n){border-right:1px solid var(--line)}
+  .promise div:last-child{border-right:0}
+}
+.q3 .c4 .ph{background:#f1ece5}
+.split12{display:grid;gap:var(--gap4)}
+.split12 .im{border-radius:20px;overflow:hidden;aspect-ratio:4/5;background:#f1ece5}
+.split12 .im img{width:100%;height:100%;object-fit:cover}
+.split12 .tx{background:#fff;border-radius:20px;padding:32px 24px;display:flex;flex-direction:column;justify-content:center;gap:14px}
+.split12 h2{font-weight:400}
+.conc12{border-top:1px solid var(--line);max-width:360px}
+.conc12 div{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--line);font-size:13.5px}
+.conc12 div.pm{color:var(--ink);font-weight:600}
+.fine{font-size:11.5px;color:var(--muted)}
+@media(min-width:900px){.split12{grid-template-columns:1fr 1fr}.split12 .tx{padding:64px}.split12.rev .im{order:2}}
+.q3 .steps4 div{background:#fff}
+</style>
+</head>
+<body class="r4 q3">
+<div data-pm="header"></div>
+
+<main>
+  <div class="wrap top">
+  <section class="hero12">
+    <img id="heroImg" alt="" fetchpriority="high">
+    <div class="tx">
+      <div class="rate4"><span class="st">★★★★★</span><b>(4.4)</b> based on 4,839 reviews</div>
+      <h1>Luxury isn't a name, it's a feeling</h1>
+      <div class="btns"><a class="b4 w" id="heroCta" href="#">Shop women</a><a class="b4 o" href="#">Shop men</a></div>
+    </div>
+  </section>
+
+  <div class="promise">
+    <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>Lasts over 8 hours</div>
+    <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 3h6M10 3v4l-4 7a5 5 0 0 0 4.5 7h3a5 5 0 0 0 4.5-7l-4-7V3"/></svg>30% Intense concentration</div>
+    <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.5"/><circle cx="17" cy="17.5" r="1.5"/></svg>Free shipping over €&nbsp;50</div>
+    <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12a8 8 0 1 0 2.3-5.6M4 4v3.5h3.5"/></svg>30-day returns, even if opened</div>
+  </div>
+  </div>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="head"><h2 style="font-weight:400">Our best smellers</h2><a href="#">Shop all scents</a></div>
+      <div class="grid4r" id="grid"></div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap split12">
+      <div class="im"><img id="oilImg" alt="" loading="lazy"></div>
+      <div class="tx">
+        <h2>30% fragrance oil. That's why you still smell it at night.</h2>
+        <p>The big brands usually only give you 10-15% perfume oils. We use 30% to keep you smelling incredible all day.</p>
+        <div class="conc12">
+          <div><span>Eau de toilette · 2-3 hours</span><span>10%</span></div>
+          <div><span>Eau de parfum · 3-6 hours</span><span>15%</span></div>
+          <div class="pm"><span>Petite Mort · 10+ hours</span><span>30%</span></div>
+        </div>
+        <p class="fine">Industry average concentrations by fragrance type. Not figures for any specific fragrance. Wear time varies by skin type and climate.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap split12 rev">
+      <div class="im"><img id="bundleImg" alt="" loading="lazy"></div>
+      <div class="tx">
+        <span style="align-self:flex-start;background:var(--coral);color:var(--ink);font-size:12px;font-weight:600;border-radius:999px;padding:4px 10px">Buy 2, get 1 free</span>
+        <h2>Build your scent wardrobe</h2>
+        <p>Pick any number of 50 ml scents. € 39 &rarr; € 26 /bottle. 3x 50ML Bundle € 78 (was € 117).</p>
+        <a class="b4 ink" href="#" style="align-self:flex-start;min-width:240px">Build your bundle</a>
+        <p class="fine">12,000+ bundles ordered</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap split12">
+      <div class="im" style="background:#cdbfae"><img src="https://petitemort.co/_next/image?url=https%3A%2F%2Fcdn.petitemort.co%2FPETITEMORT_15.png&w=1080&q=75" alt="Discovery Set" loading="lazy"></div>
+      <div class="tx">
+        <h2>Can't choose? Test 6 premium scents.</h2>
+        <p>Test six exclusive perfumes and find your perfect match. Including a €40 Gift Card.</p>
+        <p style="font-family:var(--display);font-size:26px;color:var(--ink)">€ 45 <s style="font-size:16px;color:var(--muted)">€ 70</s></p>
+        <a class="b4 ink" href="#" style="align-self:flex-start;min-width:240px">Choose 6 scents</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="head"><h2 style="font-weight:400">Wear it for 30 days. Not in love? Return it opened.</h2></div>
+      <div class="steps4">
+        <div><b>1</b><p>It arrives<span>Sealed and boxed.</span></p></div>
+        <div><b>2</b><p>You wear it<span>30 days on your skin.</span></p></div>
+        <div><b>3</b><p>You decide<span>Keep it or your money back.</span></p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="head"><h2 style="font-weight:400">What customers say</h2><div class="rate4"><span class="st">★★★★★</span><b>(4.4)</b> 4,839 reviews</div></div>
+      <div class="rev4" id="revs"></div>
+    </div>
+  </section>
+</main>
+
+<div data-pm="footer"></div>
+<div class="dock"><a class="b4 ink" href="#">Shop best sellers</a></div>
+
+<script>
+addEventListener('DOMContentLoaded', () => {
+  const $ = id => document.getElementById(id);
+  const best = ['suave-night', 'mysterious-woods', 'cherry-bomb', 'smokey-pineapple', 'sensual-oud', 'honey-tobacco', 'pure-essence', 'deep-leather'].map(PM4.by);
+  $('heroImg').src = PM4.still(PM4.by('suave-night'), 1200, ['split', 'torn']);
+  $('oilImg').src = PM4.still(PM4.by('sensual-oud'), 1200, ['notes', 'torn']);
+  $('bundleImg').src = PM4.still(PM4.by('orange-roses'), 1200, ['collage', 'torn']);
+  $('grid').innerHTML = best.map((p, i) => PM4.card(p, { eager: i < 2 })).join('');
+  $('revs').innerHTML = PM.reviews.map(r => `<figure><span class="st">★★★★★</span><blockquote>${r.t}</blockquote><figcaption>${r.n}${r.p ? ' · ' + r.p : ''} · Verified buyer</figcaption></figure>`).join('');
+  PM4.dock('#heroCta');
+});
+</script>
+</body>
+</html>

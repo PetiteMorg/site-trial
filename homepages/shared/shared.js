@@ -107,7 +107,7 @@ PM.footer = () => `
     <div class="legal"><span>Petite Mort | &copy; 2026 All Rights Reserved</span><span>Visa · Mastercard · Amex · Apple Pay</span></div>
   </div></footer>`;
 
-const CONCEPTS = [['09-quiet-ii.html','Q2','Quiet II'],['08-tiles.html','T','Tiles']];
+const CONCEPTS = [['10-direct.html','R4','Direct'],['12-quiet-iii.html','R4','Quiet III']];
 PM.bar = () => `<nav class="concept-bar">${CONCEPTS.map(([f,n,t])=>`<a href="${f}" class="${location.pathname.endsWith(f)?'on':''}">${n}<span> ${t}</span></a>`).join('')}</nav>`;
 
 // search on every concept page: full catalogue + predictive panel
