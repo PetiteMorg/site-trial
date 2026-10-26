@@ -4,12 +4,14 @@
 <meta charset="utf-8"><meta name="robots" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Petite Mort | Quiet III</title>
-<link rel="stylesheet" href="shared/base.css">
-<link rel="stylesheet" href="shared/r4.css">
-<script src="shared/shared.js"></script>
-<script src="shared/catalogue.js"></script>
-<script src="shared/agi.js"></script>
-<script src="shared/r4.js" defer></script>
+<link rel="stylesheet" href="shared/base.css?v=r4d">
+<link rel="stylesheet" href="shared/r4.css?v=r4d">
+<link rel="stylesheet" href="shared/r4-pages.css?v=r4d">
+<script src="shared/shared.js?v=r4d"></script>
+<script src="shared/catalogue.js?v=r4d"></script>
+<script src="shared/agi.js?v=r4d"></script>
+<script src="shared/r4.js?v=r4d" defer></script>
+<script src="shared/r4-cart.js?v=r4d" defer></script>
 <style>
 /* Quiet III: Quiet's calm, with the first screen of a store. The words sit ON the photograph
    (Amed: "a big picture with text under it is not a homepage"), stars and two buttons stay in
@@ -59,7 +61,7 @@
 .q3 .steps4 div{background:#fff}
 </style>
 </head>
-<body class="r4 q3">
+<body class="r4 q3 dir-quiet">
 <div data-pm="header"></div>
 
 <main>
@@ -69,7 +71,7 @@
     <div class="tx">
       <div class="rate4"><span class="st">★★★★★</span><b>(4.4)</b> based on 4,839 reviews</div>
       <h1>Luxury isn't a name, it's a feeling</h1>
-      <div class="btns"><a class="b4 w" id="heroCta" href="#">Shop women</a><a class="b4 o" href="#">Shop men</a></div>
+      <div class="btns"><a class="b4 w" id="heroCta" href="12-quiet-iii-collection.html">Shop women</a><a class="b4 o" href="12-quiet-iii-collection.html">Shop men</a></div>
     </div>
   </section>
 
@@ -83,7 +85,7 @@
 
   <section class="sec">
     <div class="wrap">
-      <div class="head"><h2 style="font-weight:400">Our best smellers</h2><a href="#">Shop all scents</a></div>
+      <div class="head"><h2 style="font-weight:400">Our best smellers</h2><a href="12-quiet-iii-collection.html">Shop all scents</a></div>
       <div class="grid4r" id="grid"></div>
     </div>
   </section>
@@ -158,7 +160,7 @@ addEventListener('DOMContentLoaded', () => {
   $('heroImg').src = PM4.still(PM4.by('suave-night'), 1200, ['split', 'torn']);
   $('oilImg').src = PM4.still(PM4.by('sensual-oud'), 1200, ['notes', 'torn']);
   $('bundleImg').src = PM4.still(PM4.by('orange-roses'), 1200, ['collage', 'torn']);
-  $('grid').innerHTML = best.map((p, i) => PM4.card(p, { eager: i < 2 })).join('');
+  $('grid').innerHTML = best.map((p, i) => PM4.card(p, { eager: i < 2 }).replaceAll('href="#' + p.h + '"', 'href="12-quiet-iii-product.html?p=' + p.h + '"')).join('');
   $('revs').innerHTML = PM.reviews.map(r => `<figure><span class="st">★★★★★</span><blockquote>${r.t}</blockquote><figcaption>${r.n}${r.p ? ' · ' + r.p : ''} · Verified buyer</figcaption></figure>`).join('');
   PM4.dock('#heroCta');
 });

@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Petite Mort | Quiet III · Checkout</title>
+<link rel="stylesheet" href="shared/base.css?v=r4d">
+<link rel="stylesheet" href="shared/r4.css?v=r4d">
+<link rel="stylesheet" href="shared/r4-pages.css?v=r4d">
+<script src="shared/shared.js?v=r4d"></script>
+<script src="shared/catalogue.js?v=r4d"></script>
+<script src="shared/agi.js?v=r4d"></script>
+<script src="shared/r4-content.js?v=r4d"></script>
+<script src="shared/r4.js?v=r4d" defer></script>
+<script src="shared/r4-cart.js?v=r4d" defer></script>
+</head>
+<!-- Checkout demo, nothing is sent or paid. One page, the Shopify/Baymard order: a collapsible
+     order summary with the total on phones, express pay first, then contact, delivery (Dutch
+     address by postcode + house number, like live), shipping, the two optional extras (never
+     pre-ticked, EU consumer rules), payment with iDEAL first, one big place-order button.
+     Desktop: form left, summary right. The demo cart is the live best-selling 3x 50ML Bundle. -->
+<body class="r4 r4p dir-quiet" style="background:#fff">
+<header class="co-head"><div class="wrap"><a class="logo" href="12-quiet-iii.html">Petite Mort</a><span class="lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>Secure checkout</span></div></header>
+
+<div class="co">
+  <details class="sum4" id="sum">
+    <summary><span>Order summary</span><b id="sumTotal">€ 78,00</b></summary>
+    <div class="in">
+      <div id="lines"></div>
+      <div class="code4"><div class="fld"><input id="code" placeholder=" "><label for="code">Discount code or gift card</label></div><button class="b4 line" style="height:52px;padding:0 18px;font-size:14px" type="button">Apply</button></div>
+      <div class="totals4" id="totals"></div>
+      <div class="reward4" id="reward"></div>
+      <div class="rate4" style="font-size:12.5px"><span class="st">★★★★★</span><b>(4.4)</b> based on 4,839 reviews · 30-day returns, even if opened</div>
+    </div>
+  </details>
+
+  <form class="form4" id="form" novalidate>
+    <div class="fs">
+      <h2>Express checkout</h2>
+      <div class="express4"><button type="button" class="ap"> Pay</button><button type="button" class="gp">G Pay</button><button type="button" class="pp">PayPal</button></div>
+      <div class="or4">or fill in your details</div>
+    </div>
+
+    <div class="fs">
+      <h2>Contact <a href="#">Log in</a></h2>
+      <div class="fld"><input id="email" type="email" autocomplete="email" placeholder=" " required><label for="email">Email</label></div>
+      <label class="chk4"><input type="checkbox" id="news">Email me news and offers</label>
+    </div>
+
+    <div class="fs">
+      <h2>Delivery</h2>
+      <div class="fld"><select id="country"><option>Netherlands</option><option>Belgium</option><option>Germany</option></select><label for="country">Country / region</label></div>
+      <div class="row2">
+        <div class="fld"><input id="pc" autocomplete="postal-code" placeholder=" "><label for="pc">Postcode</label></div>
+        <div class="fld"><input id="hn" inputmode="numeric" placeholder=" "><label for="hn">House number</label></div>
+      </div>
+      <div class="row2">
+        <div class="fld"><input id="street" autocomplete="address-line1" placeholder=" "><label for="street">Street</label></div>
+        <div class="fld"><input id="city" autocomplete="address-level2" placeholder=" "><label for="city">City</label></div>
+      </div>
+      <span class="hint muted4" style="font-size:12px;margin-top:-4px">In the shop the postcode fills in street and city.</span>
+      <div class="row2">
+        <div class="fld"><input id="fn" autocomplete="given-name" placeholder=" "><label for="fn">First name</label></div>
+        <div class="fld"><input id="ln" autocomplete="family-name" placeholder=" "><label for="ln">Last name</label></div>
+      </div>
+      <div class="fld"><input id="ph" type="tel" autocomplete="tel" placeholder=" "><label for="ph">Phone (optional)</label><span class="hint">Only for delivery updates</span></div>
+    </div>
+
+    <div class="fs">
+      <h2>Shipping</h2>
+      <div class="radio4"><label class="on"><input type="radio" name="ship" checked><span>Standard<small id="when">Delivered in 1 to 3 working days</small></span><span class="x" id="shipx">Free</span></label></div>
+    </div>
+
+    <div class="fs">
+      <h2>Add insurance to your order? <span class="muted4" style="font-family:var(--sans);font-size:13px;font-weight:400">optional</span></h2>
+      <div id="extras" style="display:flex;flex-direction:column;gap:10px"></div>
+    </div>
+
+    <div class="fs">
+      <h2>Payment</h2>
+      <p class="muted4" style="font-size:12.5px;margin-top:-4px">All transactions are secure and encrypted</p>
+      <div class="radio4" id="pay"></div>
+      <label class="chk4"><input type="checkbox" checked>Billing address is the same as shipping</label>
+    </div>
+
+    <div class="fs" style="gap:12px">
+      <button class="place4 cta4" type="submit" id="place">Place order · € 78,00</button>
+      <p class="legal4">30-day returns, even when opened.</p>
+      <p class="legal4">By ordering you agree to the <a href="#">terms</a> and <a href="#">privacy policy</a>. Your order comes with an obligation to pay.</p>
+      <p class="trial4" id="msg">Demo: nothing is ordered and nothing is paid.</p>
+    </div>
+  </form>
+</div>
+
+<script>
+addEventListener('DOMContentLoaded', () => {
+  const $ = id => document.getElementById(id);
+  const eur = c => '€ ' + (c / 100).toFixed(2).replace('.', ',');
+  // the cart from the drawer; with an empty cart the demo shows the best-selling 3x 50ML Bundle
+  const cart = window.PM4CART ? PM4CART.lines() : [];
+  const T = window.PM4CART ? PM4CART.totals() : null;
+  const items = ['mysterious-woods', 'suave-night', 'smokey-pineapple'].map(PM4.by);
+  const real = cart.length > 0;
+  const SUB = real ? T.sub : 7800, WAS = real ? T.gross : 11700, FREE50 = 9000, SHIPC = real ? T.ship : 0;
+  let extras = 0;
+
+  $('lines').innerHTML = real
+    ? cart.map(l => `<div class="line4"><div class="t"><img src="${l.h ? PM4.pack(PM4.by(l.h)) : 'https://petitemort.co/_next/image?url=https%3A%2F%2Fcdn.petitemort.co%2FPETITEMORT_15.png&w=256&q=75'}" alt=""><i>${l.q}</i></div><div><b>${l.n}</b><span>${l.h ? l.s : '6 Samples · Including a €40 Gift Card'}</span></div><div class="p">${eur(l.c * l.q)}</div></div>`).join('')
+    : `<div class="line4"><div class="t"><img src="${PM4.pack(items[0])}" alt=""><i>1</i></div>
+      <div><b>3x 50ML Bundle</b><span>${items.map(p => p.n).join(', ')}</span></div>
+      <div class="p">${eur(SUB)}<s>${eur(WAS)}</s></div></div>`;
+  const totals = () => {
+    const t = SUB + SHIPC + extras;
+    $('totals').innerHTML = `
+      <div><span>Subtotal</span><span>${eur(WAS)}</span></div>
+      ${WAS > SUB ? `<div class="save"><span>Buy 2, get 1 free</span><span>− ${eur(WAS - SUB)}</span></div>` : ''}
+      <div><span>Shipping</span><span>${SHIPC ? eur(SHIPC) : 'Free'}</span></div>
+      ${extras ? `<div><span>Extras</span><span>${eur(extras)}</span></div>` : ''}
+      <div class="tot"><span>Total <small class="muted4" style="font-weight:400;font-size:12px">EUR incl. VAT</small></span><b>${eur(t)}</b></div>`;
+    $('sumTotal').textContent = eur(t);
+    $('place').textContent = 'Place order · ' + eur(t);
+  };
+  // free 50 ml from € 90 (live reward); the extras never count towards it, as on live
+  $('reward').innerHTML = SUB >= FREE50 ? 'A free 50 ml of your choice is included' : `${eur(FREE50 - SUB)} more for a free 50 ml of your choice<div class="bar"><i style="width:${Math.round(SUB / FREE50 * 100)}%"></i></div>`;
+
+  $('extras').innerHTML = PM4C.extras.map((x, i) => `
+    <label class="chk4" style="border:1px solid #d6d2cc;border-radius:12px;padding:14px;align-items:flex-start">
+      <input type="checkbox" data-x="${x[2]}"><span style="flex:1"><b style="font-weight:500">${x[0]}</b><br><span style="font-size:12.5px;color:var(--text)">${x[1]}</span></span><span>${eur(x[2])}</span>
+    </label>`).join('');
+  $('extras').addEventListener('change', () => { extras = [...$('extras').querySelectorAll('input:checked')].reduce((s, i) => s + +i.dataset.x, 0); totals(); });
+
+  const NOTES = { 'iDEAL': 'You finish the payment in your own banking app.', 'Credit card': 'Card fields are switched off in this demo.', 'Klarna': "You'll be sent to Klarna: pay now or later.", 'PayPal': "You'll be sent to PayPal to finish.", 'Apple Pay': 'You confirm with Apple Pay after placing the order.', 'Google Pay': 'You confirm with Google Pay after placing the order.', 'Revolut Pay': "You'll be sent to Revolut Pay to finish." };
+  $('pay').innerHTML = PM4C.methods.map((m, i) => `<label class="${i ? '' : 'on'}"><input type="radio" name="pay" ${i ? '' : 'checked'}><span>${m}</span><span class="pay-logo">${m.split(' ')[0].toUpperCase()}</span><span class="more">${NOTES[m]}</span></label>`).join('');
+  $('pay').addEventListener('change', e => $('pay').querySelectorAll('label').forEach(l => l.classList.toggle('on', l.contains(e.target))));
+
+  // summary open on desktop, collapsed on phones (total stays visible in its header)
+  if (matchMedia('(min-width:900px)').matches) $('sum').open = true;
+
+  $('form').addEventListener('submit', e => {
+    e.preventDefault();
+    const bad = ['email', 'pc', 'hn', 'street', 'city', 'fn', 'ln'].filter(id => !$(id).value.trim());
+    document.querySelectorAll('.fld input').forEach(i => i.style.borderColor = '');
+    bad.forEach(id => $(id).style.borderColor = '#c4553f');
+    $('msg').textContent = bad.length ? 'Check the fields in red.' : 'Demo: this is where the order would be placed. Nothing was sent or paid.';
+    if (bad.length) $(bad[0]).focus();
+  });
+  // 1 to 3 working days from today (live shipping text), shown as dates
+  const add = n => { const d = new Date(); let k = 0; while (k < n) { d.setDate(d.getDate() + 1); if (d.getDay() % 6) k++; } return d; };
+  const f = d => d.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' });
+  $('when').textContent = `Arrives ${f(add(1))} to ${f(add(3))} · 1 to 3 working days`;
+  $('shipx').textContent = SHIPC ? eur(SHIPC) : 'Free';
+  totals();
+});
+</script>
+</body>
+</html>

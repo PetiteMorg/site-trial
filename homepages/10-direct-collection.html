@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Petite Mort | Direct · All products</title>
+<link rel="stylesheet" href="shared/base.css?v=r4d">
+<link rel="stylesheet" href="shared/r4.css?v=r4d">
+<link rel="stylesheet" href="shared/r4-pages.css?v=r4d">
+<script src="shared/shared.js?v=r4d"></script>
+<script src="shared/catalogue.js?v=r4d"></script>
+<script src="shared/agi.js?v=r4d"></script>
+<script src="shared/r4.js?v=r4d" defer></script>
+<script src="shared/r4-cart.js?v=r4d" defer></script>
+</head>
+<!-- Collection demo. First phone screen: title + count, the trust line, the filter bar (sticky),
+     and the first two products with prices and add buttons. The live page's bundle and
+     Discovery Set banners stay in the grid (after product 3 and 7); its press row moves under
+     the title. All 79 scents from the live catalogue. -->
+<body class="r4 r4p dir-direct">
+<div data-pm="header"></div>
+
+<main>
+  <div class="wrap col-top">
+    <div class="t"><h1>All products</h1><span class="n" id="count">79 products</span></div>
+    <div class="trust4"><span><span class="st">★★★★★</span> <b>(4.4)</b> based on 4,839 reviews</span><span>Excellent on <span class="tp">★ Trustpilot</span></span></div>
+  </div>
+
+  <div class="bar4">
+    <div class="wrap">
+      <nav class="pills4" id="filters" aria-label="Filter">
+        <button class="on" data-f="all">All</button><button data-f="Men">Men</button><button data-f="Women">Women</button><button data-f="bundles">Bundles</button><button data-f="new">New</button>
+      </nav>
+      <label class="sort4"><span class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden">Sort</span>
+        <select id="sort"><option value="pop">Popular</option><option value="rating">Rating</option><option value="new">New</option></select>
+      </label>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="gridc" id="grid"></div>
+    <div class="press4"><span>AS FEATURED IN</span><span>VOGUE</span><span>MARIE CLAIRE</span><span>HARPER'S BAZAAR</span><span>ELLE</span></div>
+  </div>
+</main>
+
+<div data-pm="footer"></div>
+
+<script>
+addEventListener('DOMContentLoaded', () => {
+  const $ = id => document.getElementById(id);
+  const DIR = '10-direct';
+  const popular = p => (p.pop ? 1e5 : 0) + p.c;
+
+  const card = p => `
+    <div class="c4" data-card data-h="${p.h}">
+      <a class="ph" href="${DIR}-product.html?p=${p.h}">${p.pop ? '<span class="tag">Popular</span>' : p.new ? '<span class="tag">New</span>' : ''}
+        <img class="${PM4.kind(p.h, 'packshot') ? '' : 'pk'}" src="${PM4.pack(p)}" alt="${p.n}" loading="lazy">
+        <img class="alt" src="${PM4.still(p)}" alt="" loading="lazy">
+      </a>
+      <div class="rt"><span class="st">★★★★★</span> ${p.r} (${p.c}) · ${p.g}</div>
+      <a class="nm" href="${DIR}-product.html?p=${p.h}">${p.n}</a>
+      <div class="nt">${p.notes.join(' · ')}</div>
+      ${p.fam ? `<div class="fm">Same scent family as ${p.fam}</div>` : ''}
+      <div class="q"><button class="a" data-q style="grid-column:1/-1">+ Add · 50 ml · € 39</button></div>
+    </div>`;
+
+  const promoBundle = `
+    <div class="promo4">
+      <div class="tx"><span class="chip4">Save 33%</span><h3>Build your bundle and get 1 bottle for free.</h3><p><span style="color:var(--star)">★★★★★</span> 12,000+ bundles ordered</p><a class="go" href="#">Shop &amp; save &rarr;</a></div>
+      <div class="im"><img src="${PM4.still(PM4.by('cherry-bomb'), 1200, ['collage', 'torn'])}" alt="" loading="lazy"></div>
+    </div>`;
+  const promoDs = `
+    <div class="promo4">
+      <div class="tx"><span class="chip4">Gift card included</span><h3>Can't choose? Test 6 premium scents.</h3><p>Discovery Set | 6 Samples · € 45</p><a class="go" href="#">Discovery Set &rarr;</a></div>
+      <div class="im" style="background:#cdbfae"><img src="https://petitemort.co/_next/image?url=https%3A%2F%2Fcdn.petitemort.co%2FPETITEMORT_15.png&w=828&q=75" alt="Discovery Set" loading="lazy"></div>
+    </div>`;
+
+  let filter = 'all', sort = 'pop';
+  const render = () => {
+    if (filter === 'bundles') { $('grid').innerHTML = promoBundle + promoDs; $('count').textContent = '2 products'; return; }
+    const list = PM_CAT
+      .filter(p => filter === 'all' || (filter === 'new' ? p.new : p.g === filter))
+      .sort((a, b) => sort === 'rating' ? b.r - a.r || popular(b) - popular(a) : sort === 'new' ? (b.new - a.new) || popular(b) - popular(a) : popular(b) - popular(a));
+    const tiles = list.map(card);
+    if (filter === 'all' && sort === 'pop') { tiles.splice(Math.min(3, tiles.length), 0, promoBundle); if (tiles.length > 8) tiles.splice(8, 0, promoDs); }
+    $('grid').innerHTML = tiles.join('') || '<p class="empty4">No products here yet.</p>';
+    $('count').textContent = `${list.length} products`;
+  };
+  $('filters').addEventListener('click', e => {
+    const b = e.target.closest('button'); if (!b) return;
+    filter = b.dataset.f;
+    $('filters').querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b));
+    render();
+  });
+  $('sort').addEventListener('change', e => { sort = e.target.value; render(); });
+  $('grid').addEventListener('click', e => {
+    const b = e.target.closest('[data-q]'); if (!b) return;
+    PM4CART.add(b.closest('[data-card]').dataset.h, '50 ml');
+  });
+  render();
+});
+</script>
+</body>
+</html>

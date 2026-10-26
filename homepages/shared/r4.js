@@ -14,7 +14,7 @@ window.PM4 = (() => {
   };
 
   const card = (p, opts = {}) => `
-    <div class="c4" data-card>
+    <div class="c4" data-card data-h="${p.h}" data-s="50 ml">
       <a class="ph" href="#${p.h}">${p.pop ? '<span class="tag">Popular</span>' : ''}
         <img src="${pack(p)}" alt="${p.n}" loading="${opts.eager ? 'eager' : 'lazy'}">
         <img class="alt" src="${still(p)}" alt="" loading="lazy">
@@ -23,7 +23,7 @@ window.PM4 = (() => {
       <div class="nm">${p.n}</div>
       <div class="nt">${p.notes.join(' · ')}</div>
       ${p.fam ? `<div class="fm">Same scent family as ${p.fam}</div>` : ''}
-      <div class="sz" data-sizes><button aria-pressed="true" data-p="€ 39">50 ml<small>€ 39</small></button><button aria-pressed="false" data-p="€ 59">100 ml<small>€ 59</small></button></div>
+      <div class="sz" data-sizes><button aria-pressed="true" data-p="€ 39" data-s="50 ml">50 ml<small>€ 39</small></button><button aria-pressed="false" data-p="€ 59" data-s="100 ml">100 ml<small>€ 59</small></button></div>
       <button class="add" data-add>Add to cart · € 39</button>
     </div>`;
 
@@ -33,15 +33,13 @@ window.PM4 = (() => {
     if (s) {
       const c = s.closest('[data-card]');
       c.querySelectorAll('[data-sizes] button').forEach(b => b.setAttribute('aria-pressed', b === s));
+      c.dataset.s = s.dataset.s;
       c.querySelector('[data-add]').textContent = 'Add to cart · ' + s.dataset.p;
       return;
     }
     const a = e.target.closest('[data-add]');
-    if (a && !a.classList.contains('ok')) {
-      const was = a.textContent;
-      a.classList.add('ok'); a.textContent = 'Added ✓';
-      setTimeout(() => { a.classList.remove('ok'); a.textContent = was; }, 1400);
-    }
+    if (a && window.PM4CART) { const c = a.closest('[data-card]'); PM4CART.add(c.dataset.h, c.dataset.s || '50 ml'); return; }
+    if (e.target.closest('[data-cart-open]') && window.PM4CART) PM4CART.open();
   });
 
   // Phone dock: shows the main button once the hero button has scrolled away.

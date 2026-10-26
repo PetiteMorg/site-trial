@@ -88,7 +88,7 @@ PM.header = () => `
     <nav class="nav"><a href="#">Men</a><a href="#">Women</a><a href="#">Best Sellers</a><a href="#">Bundles &amp; Save</a><a href="#">Discovery Set</a><a href="#">Contact</a></nav>
     <div class="hdr-actions">
       <a class="btn btn-coral" href="#">Build your bundle</a>
-      <span>${ICONS.cart}</span><button class="hdr-search" data-search aria-label="Search">${ICONS.search}</button><span>${ICONS.user}</span>
+      <button class="hdr-cart" data-cart-open aria-label="Cart">${ICONS.cart}<i data-cart-count></i></button><button class="hdr-search" data-search aria-label="Search">${ICONS.search}</button><span>${ICONS.user}</span>
       <span class="lang">EN / NL</span>
       <button class="burger" aria-label="Menu">${ICONS.menu}</button>
     </div>
@@ -107,7 +107,7 @@ PM.footer = () => `
     <div class="legal"><span>Petite Mort | &copy; 2026 All Rights Reserved</span><span>Visa · Mastercard · Amex · Apple Pay</span></div>
   </div></footer>`;
 
-const CONCEPTS = [['10-direct.html','R4','Direct'],['12-quiet-iii.html','R4','Quiet III']];
+const CONCEPTS = [['10-direct.html','D','Home'],['10-direct-collection.html','D','Shop'],['10-direct-product.html','D','Product'],['10-direct-checkout.html','D','Checkout'],['12-quiet-iii.html','Q3','Home'],['12-quiet-iii-collection.html','Q3','Shop'],['12-quiet-iii-product.html','Q3','Product'],['12-quiet-iii-checkout.html','Q3','Checkout']];
 PM.bar = () => `<nav class="concept-bar">${CONCEPTS.map(([f,n,t])=>`<a href="${f}" class="${location.pathname.endsWith(f)?'on':''}">${n}<span> ${t}</span></a>`).join('')}</nav>`;
 
 // search on every concept page: full catalogue + predictive panel
